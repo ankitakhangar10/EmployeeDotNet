@@ -96,5 +96,5 @@ namespace EmployeeApp.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
     }
+}
