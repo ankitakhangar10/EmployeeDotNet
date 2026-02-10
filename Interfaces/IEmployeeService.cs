@@ -7,5 +7,6 @@ namespace EmployeeApp.Interfaces
         Task<List<Employee>> GetAllAsync();
         Task<Employee> CreateEmployee(Employee obj);
         Task<Employee> GetEmployeeById(int id);
+        Task<Employee> DeleteEmployeeById(int id);
     }
 }

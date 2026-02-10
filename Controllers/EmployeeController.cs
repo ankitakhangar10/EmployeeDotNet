@@ -69,5 +69,32 @@ namespace EmployeeApp.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpDelete("DeleteEmployee/{id}")]
+        public async Task<IActionResult> DeleteEmployee(int id)
+        {
+            try
+            {
+                var data = await _emp.DeleteEmployeeById(id);
+                if (data == null)
+                {
+                    return NotFound(new ApiResponse<object>
+                    {
+                        isSucess = false,
+                        Message = "Employee Not Found",
+                        Data = null
+                    });
+                }
+                return Ok(new ApiResponse<Employee>
+                {
+                    isSucess = true,
+                    Message = "Employee Deleted Successfully",
+                    Data = data
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
-}
